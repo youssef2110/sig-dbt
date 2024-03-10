@@ -12,3 +12,5 @@ sources:
       - name: forfait_
       - name: abonnement_
       - name: employe_
+      - name: virement_salaire_
+      - name: depense_
