@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: public  
+    schema: public  
+    tables:
+      - name: paiement_
+      - name: paiement_forfait_
+      - name: paiement_frais_
+      - name: paiement_session_
+      - name: paiement_coaching_
+      - name: forfait_
+      - name: abonnement_
+      - name: employe_
