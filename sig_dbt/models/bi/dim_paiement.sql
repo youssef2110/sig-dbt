@@ -1,6 +1,7 @@
 select p.id_paiement,
        a.id_abonnement,
        a.adherent_id,
+       f.id_forfait,
        f.libelle       as forfait,
        CASE
            WHEN p.refunded_paiement_id is not null THEN 'REFUND'
@@ -31,7 +32,9 @@ select p.id_paiement,
            ELSE p.total END AS total_real,
 
        p.datepaiement,
-       p.datenextpaiement
+       p.datenextpaiement,
+
+       p.gym_id
 
 
 from {{source('public', 'paiement_')}} p
@@ -39,3 +42,5 @@ from {{source('public', 'paiement_')}} p
          left join {{source('public', 'forfait_')}} f ON f.id_forfait = a.forfait_id
          left join {{source('public', 'paiement_session_')}} ps ON ps.paiement_id = p.id_paiement
          left join {{ref('dim_paiement_forfait')}} dpf ON dpf.paiement_id = p.id_paiement
+
+where p.status != 'CANCELLED'

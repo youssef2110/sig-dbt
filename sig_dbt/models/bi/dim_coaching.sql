@@ -1,5 +1,6 @@
 select pc.id_paiement_coaching,
        pc.coach_id,
+       pc.gym_id,
        concat(c.nom, ' ', c.prenom) as coach,
        pc.prixcoaching,
        pc.moiscoaching,
